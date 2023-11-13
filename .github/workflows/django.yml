@@ -15,9 +15,9 @@ jobs:
       postgres:
         image: postgres:11.18-bullseye
         env:
-          POSTGRES_USER: decide
-          POSTGRES_PASSWORD: decide
-          POSTGRES_DB: decide
+          POSTGRES_USER: decideuser
+          POSTGRES_PASSWORD: decidepass
+          POSTGRES_DB: decidedb
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -25,7 +25,7 @@ jobs:
 
     strategy:
       matrix:
-        pyversion: ['3.8']
+        pyversion: ['3.9','3.10']
 
     steps:
     - uses: actions/checkout@v2
