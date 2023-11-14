@@ -1,16 +1,16 @@
 name: Check Code Quality
 
 on:
-    pull_request: 
-        branches: [master, develop]
+  pull_request: 
+    branches: [master, develop]
 
 jobs:
     build:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                py-version: [3.9, 3.10]
-                postgresql-version: [11.18-bullseye,14.9, 15]
+                pyversion: ['3.9', '3.10']
+                postgresql-version: [11.18-bullseye,'14.9', '15']
         services:
             postgres:
                 image: postgres:${{ matrix.postgresql-version }}
@@ -23,10 +23,10 @@ jobs:
                 options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         steps:
             - uses: actions/checkout@v2
-            - name: Set up Python ${{ matrix.py-version }}
+            - name: Set up Python ${{ matrix.pyversion }}
               uses: actions/setup-python@v2
               with:
-                  python-version: ${{ matrix.py-version }}
+                  python-version: ${{ matrix.pyversion }}
             - name: Install dependencies
               run: |
                     python -m pip install --upgrade pip
