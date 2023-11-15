@@ -1,3 +1,4 @@
+from django import forms
 from rest_framework.response import Response
 from rest_framework.status import (
         HTTP_201_CREATED,
@@ -9,8 +10,11 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as auth_login, authenticate
+from django.shortcuts import render, redirect
 
 from .serializers import UserSerializer
 
@@ -44,6 +48,7 @@ class RegisterView(APIView):
 
         username = request.data.get('username', '')
         pwd = request.data.get('password', '')
+
         if not username or not pwd:
             return Response({}, status=HTTP_400_BAD_REQUEST)
 
@@ -55,3 +60,42 @@ class RegisterView(APIView):
         except IntegrityError:
             return Response({}, status=HTTP_400_BAD_REQUEST)
         return Response({'user_pk': user.pk, 'token': token.key}, HTTP_201_CREATED)
+    
+class UserRegistrationForm(UserCreationForm):
+    email=forms.EmailField()
+    def __init__(self, *args, **kwargs):
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+        self.initial['is_staff'] = False
+
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'is_staff']
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        print(form.errors)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'authentication/register.html', {'form': form})
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        print(form.is_valid())
+        print(form.errors)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(request, username=username, password=password)
+            token,  _= Token.objects.get_or_create(user=user)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('getuser')  
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'authentication/login.html', {'form': form})
