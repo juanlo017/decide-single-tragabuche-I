@@ -101,20 +101,3 @@ def login(request):
         form = AuthenticationForm()
 
     return render(request, 'authentication/login.html', {'form': form})
-
-
-def login2(self, request):
-    values = request.POST   
-
-    username = values['username']
-    pass1 = values['password1']
-
-    user = authenticate(request, username=username, password=pass1)
-    if user is not None:
-        login(request, user)
-        print("authenticate")
-    else:
-        print("usuario no autenticado")
-        return HttpResponse("Username and password do not match", status=HTTP_400_BAD_REQUEST)
-
-    return redirect("/")
