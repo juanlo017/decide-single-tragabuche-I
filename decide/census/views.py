@@ -12,7 +12,43 @@ from rest_framework.status import (
 
 from base.perms import UserIsStaff
 from .models import Census
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib import messages
+from .resources import CensusResource
+from tablib import Dataset
 
+def import_xslx(request):
+
+    if request.method == 'POST':
+        census_resource = CensusResource()
+        dataset = Dataset()
+        new_census = request.FILES['myfile']
+
+        if not new_census.name.endswith('xlsx'):
+            messages.info(request, 'Error en el formato, debe ser .xslx')
+            return render(request, 'import.html')
+
+        data = dataset.load(new_census.read(),format='xlsx')
+
+        for d in data:
+            value = Census(
+                    data[0],
+                    data[1],
+                    data[2],
+                    data[3],
+                    data[4],
+                    data[5],
+                    data[6],
+                    data[7],
+                    data[8],
+                    data[9],
+                    data[10],
+                    data[11]
+                    )
+            value.save()
+
+    return render(request, 'import.html')
 
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
