@@ -5,6 +5,7 @@ from .views import GetUserView, LogoutView, RegisterView, register, login
 
 
 urlpatterns = [
+    path('login-view/', login, name='login'),
     path('login/', obtain_auth_token),
     path('logout/', LogoutView.as_view()),
     path('getuser/', GetUserView.as_view()),
