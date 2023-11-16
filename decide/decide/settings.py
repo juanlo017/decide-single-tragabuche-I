@@ -157,6 +157,7 @@ USE_TZ = True
 LANGUAGES = [
     ('en', _('English')),
     ('es', _('Spanish')), 
+    ('it', _('Italiano')),
     #Añadir mas en caso de ser necesario
 ]
 
