@@ -16,109 +16,108 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 #: booth/templates/booth/booth.html:24
 msgid "Logout"
-msgstr "Disconnettersi"
+msgstr "Se déconnecter"
 
 #: booth/templates/booth/booth.html:29 booth/templates/booth/booth.html:110
 msgid "Login"
-msgstr "Login"
+msgstr "se connecter"
 
 #: booth/templates/booth/booth.html:75
 msgid "¡Debe iniciar sesión para poder acceder a la votación!"
-msgstr "Devi effettuare il login per accedere alla votazione!"
+msgstr "Vous devez vous connecter pour accéder au vote !"
 
 #: booth/templates/booth/booth.html:91
 msgid "Username"
-msgstr "Nome utente"
+msgstr "nom d'utilisateur"
 
 #: booth/templates/booth/booth.html:101
 msgid "Password"
-msgstr "Parola d'ordine"
+msgstr "mot de passe"
 
 #: booth/templates/booth/booth.html:132
 msgid "Vote"
-msgstr "Votazione"
+msgstr "Vote"
 
 #: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
 #: booth/templates/booth/booth.html:282
 msgid "Error: "
-msgstr "Errore: "
+msgstr "Erreur: "
 
 #: booth/templates/booth/booth.html:278
 msgid "Congratulations. Your vote has been sent"
-msgstr "Congratulazioni. Il tuo voto è stato inviato"
+msgstr "Toutes nos félicitations. Votre vote a été envoyé"
 
 #: decide/settings.py:158
 msgid "English"
-msgstr "Inglese"
+msgstr "Anglais"
 
 #: decide/settings.py:159
 msgid "Spanish"
-msgstr "Spagnolo"
+msgstr "Espagnol"
 
 #: decide/settings.py:160
 msgid "Italiano"
-msgstr "Italiano"
+msgstr "italien"
 
 #: decide/settings.py:161
 msgid "French"
-msgstr "Francese"
+msgstr "Français"
 
 #: decide/settings.py:162
 msgid "Portuguese"
-msgstr "Portoghese"
+msgstr "Portugais"
 
 #: decide/settings.py:163
 msgid "German"
-msgstr "Tedesco"
+msgstr "Allemand"
 
 #: decide/settings.py:164
 msgid "Esperanto"
-msgstr "Esperanto"
+msgstr "Espéranto"
 
 #: decide/settings.py:165
 msgid "Catalan"
-msgstr "Catalano"
+msgstr "Catalan"
 
 #: decide/settings.py:166
 msgid "Galician"
-msgstr "Galiziano"
+msgstr "Galicien"
 
 #: decide/settings.py:167
 msgid "Irish"
-msgstr "Irlandesi"
+msgstr "Irlandais"
 
 #: decide/settings.py:168
 msgid "Scottish"
-msgstr "Scozzese"
+msgstr "Écossais"
 
 #: decide/settings.py:169
 msgid "Turkish"
-msgstr "Turco"
+msgstr "Turc"
 
 #: visualizer/templates/visualizer/visualizer.html:23
 msgid "Votación no comenzada"
-msgstr "Votazioni non iniziate"
+msgstr "Le vote n'a pas commencé"
 
 #: visualizer/templates/visualizer/visualizer.html:24
 msgid "Votación en curso"
-msgstr "Votazioni in corso"
+msgstr "Vote en cours"
 
 #: visualizer/templates/visualizer/visualizer.html:26
 msgid "Resultados:"
-msgstr "Risultati:"
+msgstr "Résultats:"
 
 #: visualizer/templates/visualizer/visualizer.html:31
 msgid "Opción"
-msgstr "Opzione"
+msgstr "Option"
 
 #: visualizer/templates/visualizer/visualizer.html:32
 msgid "Puntuación"
-msgstr "Punteggiatura"
+msgstr "Ponctuation"
 
 #: visualizer/templates/visualizer/visualizer.html:33
 msgid "Votos"
-msgstr "Voti"
+msgstr "Votes"

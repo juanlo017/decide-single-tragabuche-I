@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-15 19:06+0000\n"
+"POT-Creation-Date: 2023-11-22 12:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,14 @@ msgstr ""
 msgid "Logout"
 msgstr "Logout"
 
+#: booth/templates/booth/booth.html:29 booth/templates/booth/booth.html:110
+msgid "Login"
+msgstr "Login"
+
+#: booth/templates/booth/booth.html:75
+msgid "¡Debe iniciar sesión para poder acceder a la votación!"
+msgstr "You must log in to access voting!"
+
 #: booth/templates/booth/booth.html:91
 msgid "Username"
 msgstr "Username"
@@ -29,10 +37,6 @@ msgstr "Username"
 #: booth/templates/booth/booth.html:101
 msgid "Password"
 msgstr "Password"
-
-#: booth/templates/booth/booth.html:110
-msgid "Login"
-msgstr "Login"
 
 #: booth/templates/booth/booth.html:132
 msgid "Vote"
@@ -58,3 +62,63 @@ msgstr "Spanish"
 #: decide/settings.py:160
 msgid "Italiano"
 msgstr "Italian"
+
+#: decide/settings.py:161
+msgid "French"
+msgstr "French"
+
+#: decide/settings.py:162
+msgid "Portuguese"
+msgstr "Portuguese"
+
+#: decide/settings.py:163
+msgid "German"
+msgstr "German"
+
+#: decide/settings.py:164
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: decide/settings.py:165
+msgid "Catalan"
+msgstr "Catalan"
+
+#: decide/settings.py:166
+msgid "Galician"
+msgstr "Galician"
+
+#: decide/settings.py:167
+msgid "Irish"
+msgstr "Irish"
+
+#: decide/settings.py:168
+msgid "Scottish"
+msgstr "Scottish"
+
+#: decide/settings.py:169
+msgid "Turkish"
+msgstr "Turkish"
+
+#: visualizer/templates/visualizer/visualizer.html:23
+msgid "Votación no comenzada"
+msgstr "voting not started"
+
+#: visualizer/templates/visualizer/visualizer.html:24
+msgid "Votación en curso"
+msgstr "Voting in progress"
+
+#: visualizer/templates/visualizer/visualizer.html:26
+msgid "Resultados:"
+msgstr "Results:"
+
+#: visualizer/templates/visualizer/visualizer.html:31
+msgid "Opción"
+msgstr "Option"
+
+#: visualizer/templates/visualizer/visualizer.html:32
+msgid "Puntuación"
+msgstr "Score"
+
+#: visualizer/templates/visualizer/visualizer.html:33
+msgid "Votos"
+msgstr "Votes"
