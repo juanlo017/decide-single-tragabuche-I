@@ -1,5 +1,6 @@
 from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
+from .forms import CreationCensusForm
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.status import (
@@ -16,7 +17,101 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from .resources import CensusResource
+from django.views.generic import ListView
 from tablib import Dataset
+
+def votingIdSet():
+    lista=[]
+    for census in Census.objects.all():
+        lista.append(census.voting_id)
+    conjunto=set(lista)
+    return conjunto
+
+def filter(request):
+    censo = Census.objects.all()
+    votingIds = votingIdSet()
+    return render(request, 'filterCensus.html',{'census' : censo, 'votingsIds': votingsIds})
+
+class FilterVotingID(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('i')
+        return Census.objects.filter(voting_id__icontains=query).order_by('-voting_id')
+
+class FilterVoterID(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('i')
+        return Census.objects.filter(voting_id__icontains=query).order_by('-voter_id')
+
+class FilterName(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Census.objects.filter(name__icontains=query).order_by('-name')
+
+class FilterSurname(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('i')
+        return Census.objects.filter(surname__icontains=query).order_by('-surname')
+
+class FilterCity(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('j')
+        return Census.objects.filter(city__icontains=query).order_by('-city')
+
+class FilterRrgion(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('j')
+        return Census.objects.filter(region__icontains=query).order_by('-region')
+
+class FilterGender(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('j')
+        return Census.objects.filter(gender__icontains=query).order_by('-gender')
+
+class FilterBirthYear(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('j')
+        return Census.objects.filter(birth_year__icontains=query).order_by('-birth_year')
+
+class FilterCivilState(ListView):
+    model = Census
+    template_name = 'filterCensus.html'
+    context_object_name = 'census'
+
+    def get_queryset(self):
+        query = self.request.GET.get('j')
+        return Census.objects.filter(civil_state__icontains=query).order_by('-civil_state')
 
 def import_xslx(request):
 
@@ -70,6 +165,7 @@ class CensusCreate(generics.ListCreateAPIView):
         return Response({'voters': voters})
 
 
+
 class CensusDetail(generics.RetrieveDestroyAPIView):
 
     def destroy(self, request, voting_id, *args, **kwargs):
@@ -85,3 +181,19 @@ class CensusDetail(generics.RetrieveDestroyAPIView):
         except ObjectDoesNotExist:
             return Response('Invalid voter', status=ST_401)
         return Response('Valid voter')
+
+def createCensus(request): 
+    if request.method == 'GET':
+        return render(request, 'census_create.html',{'form': CreationCensusForm})
+    else: 
+        if request.method == 'POST':
+            try: 
+                census = Census.objects.create(voting_id = request.POST['voting_id'],voter_id = request.POST['voter_id'],
+                name = request.POST['name'],surname= request.POST['surname'],city = request.POST['city'],region = request.POST['region'],
+                gender = request.POST['gender'],birth_year = request.POST['birth_year'],civil_state = request.POST['civil_state'],has_job = request.POST['has_job'])
+                census.save()
+                return render(request,'census_succeed.html',{'census':census})
+                
+            except: 
+                return render(request,'census_create.html',{'form': CreationCensusForm, "error": 'Census already exist'})
+        return  render(request,'census_create.html',{'form': CreationCensusForm})
