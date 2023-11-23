@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('create', views.CensusCreate.as_view(), name='census_create'),
+    path('create/', views.createCensus, name='create_census'),
     path('deatils<int:voting_id>', views.CensusDetail.as_view(), name='census_detail'),
-    #path('import/', views.import, name='import_xslx'),
+    path('import/', views.import_xslx, name='import_xslx'),
 ]
