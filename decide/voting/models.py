@@ -15,11 +15,11 @@ class Question(models.Model):
         ('YN', 'Yes/No Question'),
     ]
     #Ponemos que el typo por defecto sea OQ
-    types = models.CharField(max_length=10, choices=voting_types, default='OQ')
+    yes_no = models.BooleanField(default=False, verbose_name="Yes or No question type. Please, don't write in the options below")
 
-    def save(self):
-        super().save()
-        if self.types == 'YN':
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs) 
+        if self.yes_no:
             import voting.views
             voting.views.create_yes_or_no_question(self)
 
@@ -34,11 +34,13 @@ class QuestionOption(models.Model):
 
     def save(self):
         #Si es YN pero las opciones no son Yes o No, da error.
-        if self.question.types == 'YN':
-            if self.option not in ['Yes', 'No']:
-                raise ValueError("For 'Yes/No' questions, option must be 'Sí' or 'No'.")
-        if not self.number:
-            self.number = self.question.options.count() + 2
+        if self.question.yes_no:
+            if self.option not in ['', 'Yes', 'No']:
+                if self.number:
+                    raise ValueError("Option must be empty. Don't write options if you select Yes or No Questions.")
+        else:
+            if not self.number:
+                self.number = self.question.options.count() + 2
         return super().save()
 
     def __str__(self):

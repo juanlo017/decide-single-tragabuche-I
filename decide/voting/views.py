@@ -103,14 +103,13 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
         return Response(msg, status=st)
 
 def create_yes_or_no_question(self):
-    option_yes = QuestionOption.objects.filter(question=self, option='Yes').first()
-    option_no = QuestionOption.objects.filter(question=self, option='No').first()
+    all_options = QuestionOption.objects.all().filter(question=self)
+    for opt in all_options:
+        opt.delete()
 
-    if option_yes is None and option_no is None:
-        msg = "Option must be 'Yes' or 'No'" 
-        st=status.HTTP_400_BAD_REQUEST
+    option_yes = QuestionOption(option='Yes', number=1, question=self)
+    option_no = QuestionOption(option='No', number=2, question=self)
 
-    else: 
-        option_yes.save()
-        option_no.save()
+    option_yes.save()
+    option_no.save()
             
