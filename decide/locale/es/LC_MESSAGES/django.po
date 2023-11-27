@@ -45,15 +45,15 @@ msgstr "Votar"
 #: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
 #: booth/templates/booth/booth.html:282
 msgid "Error: "
-msgstr "Error:"
+msgstr "Error: "
 
 #: booth/templates/booth/booth.html:278
 msgid "Congratulations. Your vote has been sent"
-msgstr "Enhorabuena. Su voto ha sido enviado lol"
+msgstr "Enhorabuena. Su voto ha sido enviado"
 
 #: decide/settings.py:158
 msgid "English"
-msgstr "Ingles"
+msgstr "Inglés"
 
 #: decide/settings.py:159
 msgid "Spanish"
@@ -65,15 +65,15 @@ msgstr "Italiano"
 
 #: decide/settings.py:161
 msgid "French"
-msgstr "Frances"
+msgstr "Francés"
 
 #: decide/settings.py:162
 msgid "Portuguese"
-msgstr "Portugues"
+msgstr "Portugués"
 
 #: decide/settings.py:163
 msgid "German"
-msgstr "Aleman"
+msgstr "Alemán"
 
 #: decide/settings.py:164
 msgid "Esperanto"
@@ -81,7 +81,7 @@ msgstr "Esperanto"
 
 #: decide/settings.py:165
 msgid "Catalan"
-msgstr "Catalan"
+msgstr "Catalán"
 
 #: decide/settings.py:166
 msgid "Galician"
@@ -89,11 +89,11 @@ msgstr "Gallego"
 
 #: decide/settings.py:167
 msgid "Irish"
-msgstr "Irlandes"
+msgstr "Irlandés"
 
 #: decide/settings.py:168
 msgid "Scottish"
-msgstr "Escoces"
+msgstr "Escocés"
 
 #: decide/settings.py:169
 msgid "Turkish"

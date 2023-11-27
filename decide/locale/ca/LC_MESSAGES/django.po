@@ -100,7 +100,7 @@ msgstr "Turc"
 
 #: visualizer/templates/visualizer/visualizer.html:23
 msgid "Votación no comenzada"
-msgstr ""
+msgstr "Votació no començada"
 
 #: visualizer/templates/visualizer/visualizer.html:24
 msgid "Votación en curso"

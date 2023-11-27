@@ -27,7 +27,7 @@ msgstr "se connecter"
 
 #: booth/templates/booth/booth.html:75
 msgid "¡Debe iniciar sesión para poder acceder a la votación!"
-msgstr "Vous devez vous connecter pour accéder au vote !"
+msgstr "Vous devez vous connecter pour accéder au vote!"
 
 #: booth/templates/booth/booth.html:91
 msgid "Username"
