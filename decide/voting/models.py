@@ -36,8 +36,7 @@ class QuestionOption(models.Model):
         #Si es YN pero las opciones no son Yes o No, da error.
         if self.question.yes_no:
             if self.option not in ['', 'Yes', 'No']:
-                if self.number:
-                    raise ValueError("Option must be empty. Don't write options if you select Yes or No Questions.")
+                raise ValueError("Option must be empty. Don't write options if you select Yes or No Questions.")
         else:
             if not self.number:
                 self.number = self.question.options.count() + 2
