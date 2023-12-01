@@ -5,6 +5,8 @@ from .models import QuestionOption
 from .models import Question
 from .models import Voting
 
+from .forms import QuestionOptionAdminForm
+
 from .filters import StartedFilter
 
 
@@ -29,6 +31,7 @@ def tally(ModelAdmin, request, queryset):
 
 class QuestionOptionInline(admin.TabularInline):
     model = QuestionOption
+    form = QuestionOptionAdminForm
 
 
 class QuestionAdmin(admin.ModelAdmin):

@@ -33,13 +33,8 @@ class QuestionOption(models.Model):
     option = models.TextField()
 
     def save(self):
-        #Si es YN pero las opciones no son Yes o No, da error.
-        if self.question.yes_no:
-            if self.option not in ['', 'Yes', 'No']:
-                raise ValueError("Option must be empty. Don't write options if you select Yes or No Questions.")
-        else:
-            if not self.number:
-                self.number = self.question.options.count() + 2
+        if not self.number:
+            self.number = self.question.options.count() + 1
         return super().save()
 
     def __str__(self):
