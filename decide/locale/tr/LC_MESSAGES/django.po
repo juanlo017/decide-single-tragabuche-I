@@ -31,11 +31,11 @@ msgstr "Oylamaya erişebilmek için giriş yapmalısınız!"
 
 #: booth/templates/booth/booth.html:91
 msgid "Username"
-msgstr ""
+msgstr "Kullanıcı adı"
 
 #: booth/templates/booth/booth.html:101
 msgid "Password"
-msgstr "Kullanıcı adı"
+msgstr "Şifre"
 
 #: booth/templates/booth/booth.html:132
 msgid "Vote"

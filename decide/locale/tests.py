@@ -341,7 +341,7 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Çıkış Yap', _('Logout'))
         self.assertEqual('Giriş yapmak', _('Login'))
         self.assertEqual("Oylamaya erişebilmek için giriş yapmalısınız!", _('¡Debe iniciar sesión para poder acceder a la votación!'))
-        self.assertEqual("Kullanıcı Adı", _('Username'))
+        self.assertEqual("Kullanıcı adı", _('Username'))
         self.assertEqual("Şifre", _('Password'))
         self.assertEqual('Oy', _('Vote'))
         self.assertEqual('Hata: ', _('Error: '))
