@@ -1,12 +1,11 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
-
+from django.urls import reverse
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-
 from base import mods
-
+from django.urls import reverse
 
 class AuthTestCase(APITestCase):
 
@@ -85,3 +84,50 @@ class AuthTestCase(APITestCase):
 
         self.assertEqual(Token.objects.filter(user__username='voter1').count(), 0)
 
+#Tests sin persistencia
+class RegistrationTest(TestCase):
+
+    def test_registration_view(self):
+        # Prueba de registro exitoso
+        response = self.client.post(reverse('register'), {'username': 'testuser23', 'password1': 'yhenenxmaawSNA@SMDNE', 'password2': 'yhenenxmaawSNA@SMDNE', 'email': 'testmail@gmail.com', 'firstname': 'testname', 'lastname':'testlastname'})
+        self.assertEqual(User.objects.filter(username='testuser23').count(), 1)
+
+    def test_registration_invalid_form(self):
+        # Prueba de registro con formulario inválido
+        response = self.client.post(reverse('register'), {'username': 'testuser'})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'This field is required.')
+
+    def test_registration_password_mismatch(self):
+        # Prueba de registro con contraseñas que no coinciden
+        response = self.client.post(reverse('register'), {'username': 'testuser', 'password1': 'testpass', 'password2': 'wrongpass', 'email': 'testmail@gmail.com', 'firstname': 'testname', 'lastname':'testlastname'})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'The two password fields didn’t match.')
+    def test_registration_existing_user(self):
+        # Prueba de registro con un usuario que ya existe
+        User.objects.create_user(username='existinguser', password='testpass')
+        response = self.client.post(reverse('register'), {'username': 'existinguser', 'password1': 'testpass', 'password2': 'testpass'})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'A user with that username already exists.')
+
+    def test_registration_blank_fields(self):
+        # Intentar registrar un usuario con campos en blanco
+        data = {
+            'username': '',
+            'password1': '',
+            'password2': '',
+            'email': '',
+        }
+        response = self.client.post(reverse('register'), data)
+        self.assertContains(response, 'This field is required.')
+
+    def test_registration_weak_password(self):
+        # Intentar registrar un usuario con una contraseña débil
+        data = {
+            'username': 'weakuser',
+            'password1': '123456',  # Contraseña débil
+            'password2': '123456',
+            'email': 'weakuser@example.com',
+        }
+        response = self.client.post(reverse('register'), data)
+        self.assertContains(response, 'This password is too common.')
