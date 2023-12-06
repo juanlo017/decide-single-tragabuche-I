@@ -143,7 +143,7 @@ def import_xslx(request):
                     )
             value.save()
 
-    return render(request, 'import.html')
+    return render(request, 'importer.html')
 
 class CensusCreate(generics.ListCreateAPIView):
     permission_classes = (UserIsStaff,)
