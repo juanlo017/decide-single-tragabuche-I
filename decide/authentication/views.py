@@ -78,7 +78,7 @@ def register(request):
         print(form.errors)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/admin')
     else:
         form = UserRegistrationForm()
     return render(request, 'authentication/register.html', {'form': form})
@@ -90,13 +90,12 @@ def login(request):
         print(form.errors)
         if form.is_valid():
             username = form.cleaned_data['username']
-            print(username)
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             token,  _= Token.objects.get_or_create(user=user)
             if user is not None:
                 auth_login(request, user)
-                return redirect('/')  
+                return redirect('/admin')  
     else:
         form = AuthenticationForm()
 
