@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Barras</title>
+    <!-- Incluye la biblioteca Chart.js desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráfico de Barras</h1>
+    <div style="width: 80%; margin: auto;">
+        <!-- El elemento canvas donde se dibujará el gráfico -->
+        <canvas id="myBarChart"></canvas>
+    </div>
+
+    <script>
+        // Datos para el gráfico
+        var data = {
+            labels: ['Categoría 1', 'Categoría 2', 'Categoría 3', 'Categoría 4', 'Categoría 5'],
+            datasets: [{
+                label: 'Datos de Ejemplo',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [12, 19, 3, 5, 2], // Datos de las barras
+            }]
+        };
+
+        // Opciones de configuración del gráfico
+        var options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Obtén el contexto del elemento canvas
+        var ctx = document.getElementById('myBarChart').getContext('2d');
+
+        // Crea un objeto de gráfico de barras
+        var myBarChart = new Chart(ctx, {
+            type: 'bar', // Tipo de gráfico
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+</html>
