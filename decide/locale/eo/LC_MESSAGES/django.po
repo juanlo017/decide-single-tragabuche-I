@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-22 12:57+0000\n"
+"POT-Creation-Date: 2023-11-22 12:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,63 +17,62 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
 #: booth/templates/booth/booth.html:24
 msgid "Logout"
-msgstr "Logout"
+msgstr "Elsaluti"
 
 #: booth/templates/booth/booth.html:29 booth/templates/booth/booth.html:110
 msgid "Login"
-msgstr "Login"
+msgstr "Ensaluti"
 
 #: booth/templates/booth/booth.html:75
 msgid "¡Debe iniciar sesión para poder acceder a la votación!"
-msgstr "You must log in to access voting!"
+msgstr "Vi devas ensaluti por aliri voĉdonadon!"
 
 #: booth/templates/booth/booth.html:91
 msgid "Username"
-msgstr "Username"
+msgstr "Uzantnomo"
 
 #: booth/templates/booth/booth.html:101
 msgid "Password"
-msgstr "Password"
+msgstr "Pasvorto"
 
 #: booth/templates/booth/booth.html:132
 msgid "Vote"
-msgstr "Vote"
+msgstr "Voĉdoni"
 
 #: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
 #: booth/templates/booth/booth.html:282
 msgid "Error: "
-msgstr "Error: "
+msgstr "Eraro: "
 
 #: booth/templates/booth/booth.html:278
 msgid "Congratulations. Your vote has been sent"
-msgstr "Congratulations. Your vote has been sent"
+msgstr "Gratulon. Via voĉdono estas sendita"
 
 #: decide/settings.py:158
 msgid "English"
-msgstr "English"
+msgstr "La Angla"
 
 #: decide/settings.py:159
 msgid "Spanish"
-msgstr "Spanish"
+msgstr "Hispana"
 
 #: decide/settings.py:160
 msgid "Italiano"
-msgstr "Italian"
+msgstr "Itala"
 
 #: decide/settings.py:161
 msgid "French"
-msgstr "French"
+msgstr "Franca"
 
 #: decide/settings.py:162
 msgid "Portuguese"
-msgstr "Portuguese"
+msgstr "Portugala"
 
 #: decide/settings.py:163
 msgid "German"
-msgstr "German"
+msgstr "Germana"
 
 #: decide/settings.py:164
 msgid "Esperanto"
@@ -81,44 +80,44 @@ msgstr "Esperanto"
 
 #: decide/settings.py:165
 msgid "Catalan"
-msgstr "Catalan"
+msgstr "Kataluna"
 
 #: decide/settings.py:166
 msgid "Galician"
-msgstr "Galician"
+msgstr "Galego"
 
 #: decide/settings.py:167
 msgid "Irish"
-msgstr "Irish"
+msgstr "Irlandano"
 
 #: decide/settings.py:168
 msgid "Scottish"
-msgstr "Scottish"
+msgstr "Skota"
 
 #: decide/settings.py:169
 msgid "Turkish"
-msgstr "Turkish"
+msgstr "Turka"
 
 #: visualizer/templates/visualizer/visualizer.html:23
 msgid "Votación no comenzada"
-msgstr "voting not started"
+msgstr "Voĉdonado ne komenciĝis"
 
 #: visualizer/templates/visualizer/visualizer.html:24
 msgid "Votación en curso"
-msgstr "Voting in progress"
+msgstr "Voĉdonado en progreso"
 
 #: visualizer/templates/visualizer/visualizer.html:26
 msgid "Resultados:"
-msgstr "Results:"
+msgstr "Rezulto:"
 
 #: visualizer/templates/visualizer/visualizer.html:31
 msgid "Opción"
-msgstr "Option"
+msgstr "Opcio"
 
 #: visualizer/templates/visualizer/visualizer.html:32
 msgid "Puntuación"
-msgstr "Score"
+msgstr "Interpunkcio"
 
 #: visualizer/templates/visualizer/visualizer.html:33
 msgid "Votos"
-msgstr "Votes"
+msgstr "Voĉdonoj"

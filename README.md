@@ -491,3 +491,28 @@ versiones usadas actualmente se corresponden a las siguientes:
 * Vue=3
 * Bootstrap=5.2
 * selenium = 4.7.2
+* pynose==1.4.8 (añadido durante el desarrollo)
+
+
+
+Gestión de las traducciones
+--------------------------
+
+Primero:
+* Asegurarse de que la dependencia del sistema gettext está instalada para proceder con las traducciones
+Se importaria en el cmd  por medio del siguiente comando:
+'''
+sudo apt-get install gettext
+'''
+
+posteriormente, deberiamos ejecutar el siguiente comando para generar los archivos .mo:
+'''
+python3 manage.py compilemessages 
+'''
+
+y por ultimo ejecutar el comando de test:
+'''
+python3 manage.py test locale
+'''
+
+
