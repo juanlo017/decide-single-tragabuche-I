@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from django.utils.translation import gettext_lazy as _ #Para las traducciones
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.middleware.locale', #Añade internacionalización
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -75,6 +77,7 @@ BASEURL = 'http://localhost:8000'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', #Añade internacionalización
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -149,6 +152,27 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+#Permite añadir idiomas opcionales
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish')), 
+    ('it', _('Italiano')),
+    ('fr', _('French')),
+    ('pt', _('Portuguese')),
+    ('de', _('German')),
+    ('eo', _('Esperanto')),
+    ('ca', _('Catalan')),
+    ('gl', _('Galician')),
+    ('ga', _('Irish')),
+    ('gd', _('Scottish')),
+    ('tr', _('Turkish')),
+    #Añadir mas en caso de ser necesario
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'), #Linea añadida para que Django permita cambiar idiomas
+]
 
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

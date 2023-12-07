@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-22 12:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: booth/templates/booth/booth.html:24
+msgid "Logout"
+msgstr "Ausloggen"
+
+#: booth/templates/booth/booth.html:29 booth/templates/booth/booth.html:110
+msgid "Login"
+msgstr "Anmeldung"
+
+#: booth/templates/booth/booth.html:75
+msgid "¡Debe iniciar sesión para poder acceder a la votación!"
+msgstr "Sie müssen sich anmelden, um auf die Abstimmung zugreifen zu können!"
+
+#: booth/templates/booth/booth.html:91
+msgid "Username"
+msgstr "Nutzername"
+
+#: booth/templates/booth/booth.html:101
+msgid "Password"
+msgstr "Passwort"
+
+#: booth/templates/booth/booth.html:132
+msgid "Vote"
+msgstr "Abstimmung"
+
+#: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
+#: booth/templates/booth/booth.html:282
+msgid "Error: "
+msgstr "Fehler: "
+
+#: booth/templates/booth/booth.html:278
+msgid "Congratulations. Your vote has been sent"
+msgstr "Glückwunsch. Ihre Stimme wurde gesendet"
+
+#: decide/settings.py:158
+msgid "English"
+msgstr "Englisch"
+
+#: decide/settings.py:159
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: decide/settings.py:160
+msgid "Italiano"
+msgstr "Italienisch"
+
+#: decide/settings.py:161
+msgid "French"
+msgstr "französisch"
+
+#: decide/settings.py:162
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+#: decide/settings.py:163
+msgid "German"
+msgstr "Deutsch"
+
+#: decide/settings.py:164
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: decide/settings.py:165
+msgid "Catalan"
+msgstr "Katalanisch"
+
+#: decide/settings.py:166
+msgid "Galician"
+msgstr "Galizisch"
+
+#: decide/settings.py:167
+msgid "Irish"
+msgstr "Irisch"
+
+#: decide/settings.py:168
+msgid "Scottish"
+msgstr "Schottisch"
+
+#: decide/settings.py:169
+msgid "Turkish"
+msgstr "Türkisch"
+
+#: visualizer/templates/visualizer/visualizer.html:23
+msgid "Votación no comenzada"
+msgstr "Die Abstimmung wurde nicht gestartet"
+
+#: visualizer/templates/visualizer/visualizer.html:24
+msgid "Votación en curso"
+msgstr "Abstimmung läuft"
+
+#: visualizer/templates/visualizer/visualizer.html:26
+msgid "Resultados:"
+msgstr "Ergebnisse:"
+
+#: visualizer/templates/visualizer/visualizer.html:31
+msgid "Opción"
+msgstr "Möglichkeit"
+
+#: visualizer/templates/visualizer/visualizer.html:32
+msgid "Puntuación"
+msgstr "Interpunktion"
+
+#: visualizer/templates/visualizer/visualizer.html:33
+msgid "Votos"
+msgstr "Stimmen"
