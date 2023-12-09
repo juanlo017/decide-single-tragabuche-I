@@ -206,3 +206,51 @@ class PostProcTestCase(APITestCase):
         values = response.json()
         self.assertNotEqual(values, expected_result)
 
+    def test_borda_count_standard(self):
+        data = {
+            'type': 'BORDA',
+            'options': [
+                {'name': 'Option A', 'votes': 100},
+                {'name': 'Option B', 'votes': 80},
+                {'name': 'Option C', 'votes': 60}
+            ]
+        }
+        
+        expected_output = [
+            {'name': 'Option A', 'points': 300},
+            {'name': 'Option B', 'points': 160},
+            {'name': 'Option C', 'points': 60}
+        ]
+
+        response = self.client.post('/postproc/', data, format='json')
+
+        values = response.json()
+
+        self.assertEqual(values, expected_output)
+
+    def test_borda_count_single_option(self):
+        data = {
+            'type': 'BORDA',
+            'options': [
+                {'name': 'Option A', 'votes': 100}
+            ]
+        }
+        expected_output = [{'name': 'Option A', 'points': 100}]
+
+        response = self.client.post('/postproc/', data, format='json')
+        values = response.json()
+
+        self.assertEqual(values, expected_output)
+
+    def test_borda_count_empty(self):
+        data = {
+            'type': 'BORDA',
+            'options': []
+        }
+        expected_output = []
+        
+        response = self.client.post('/postproc/', data, format='json')
+        values = response.json()
+
+        self.assertEqual(values, expected_output)
+
