@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+  <h2>Registro</h2>
+  <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    
+    <label for="{{ form.username.id_for_label }}">Username:</label>
+    {{ form.username }}
+    {{ form.username.errors }}
+    
+    <br>
+    
+    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+    {{ form.password1 }}
+    {{ form.password1.errors }}
+
+    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña:</label>
+    {{ form.password2 }}
+    {{ form.password2.errors }}
+
+    <br>
+    
+    <label for="{{ form.email.id_for_label }}">Email:</label>
+    {{ form.email }}
+    {{ form.email.errors }}
+    
+    <br>
+
+    
+    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+    {{ form.first_name }}
+    {{ form.first_name.errors }}
+    
+    <br>
+
+    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+    {{ form.last_name }}
+    {{ form.last_name.errors }}
+    
+    <br>
+    
+    <button type="submit">Registrarse</button>
+  </form>
+</body>
+</html>
+

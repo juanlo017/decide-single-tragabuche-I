@@ -10,6 +10,19 @@ from base.models import Auth, Key
 class Question(models.Model):
     desc = models.TextField()
 
+    voting_types = [
+        ('OQ', 'Optional Quesrion'),
+        ('YN', 'Yes/No Question'),
+    ]
+    #Ponemos que el typo por defecto sea OQ
+    types = models.CharField(max_length=10, choices=voting_types, default='OQ')
+
+    def save(self):
+        super().save()
+        if self.types == 'YN':
+            import voting.views
+            voting.views.create_yes_or_no_question(self)
+
     def __str__(self):
         return self.desc
 
@@ -20,6 +33,10 @@ class QuestionOption(models.Model):
     option = models.TextField()
 
     def save(self):
+        #Si es YN pero las opciones no son Yes o No, da error.
+        if self.question.types == 'YN':
+            if self.option not in ['Yes', 'No']:
+                raise ValueError("For 'Yes/No' questions, option must be 'Sí' or 'No'.")
         if not self.number:
             self.number = self.question.options.count() + 2
         return super().save()
@@ -123,7 +140,7 @@ class Voting(models.Model):
                 'votes': votes
             })
 
-        data = { 'type': 'IDENTITY', 'options': opts }
+        data = { 'type': 'PARIDAD', 'options': opts }
         postp = mods.post('postproc', json=data)
 
         self.postproc = postp
