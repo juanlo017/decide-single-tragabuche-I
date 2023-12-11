@@ -78,6 +78,5 @@ class PostProcView(APIView):
             return self.paridad(opts)
         elif t == 'BORDA':
             return self.borda_count(opts)
-        # Puedes agregar más lógica para otros tipos de postprocesamiento si es necesario
 
         return Response({})

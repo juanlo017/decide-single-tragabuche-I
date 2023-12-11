@@ -5,13 +5,13 @@ from django.dispatch import receiver
 
 from base import mods
 from base.models import Auth, Key
-
+from django.utils.translation import gettext_lazy as _ 
 
 class Question(models.Model):
     desc = models.TextField()
 
     voting_types = [
-        ('OQ', 'Optional Quesrion'),
+        ('OQ', 'Optional Question'),
         ('YN', 'Yes/No Question'),
     ]
     #Ponemos que el typo por defecto sea OQ
@@ -50,6 +50,17 @@ class Voting(models.Model):
     desc = models.TextField(blank=True, null=True)
     question = models.ForeignKey(Question, related_name='voting', on_delete=models.CASCADE)
 
+    class PostProcType(models.TextChoices):
+        IDENTITY = 'IDENTITY', _('Identity tally')
+        PARIDAD = 'PARIDAD', _('Parity tally')
+        BORDA = 'BORDA', _('Borda count tally')
+
+    postproc_type = models.CharField(
+        max_length=10,
+        choices=PostProcType.choices,
+        default=PostProcType.IDENTITY
+    )
+
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
 
@@ -58,6 +69,8 @@ class Voting(models.Model):
 
     tally = JSONField(blank=True, null=True)
     postproc = JSONField(blank=True, null=True)
+
+
 
     def create_pubkey(self):
         if self.pub_key or not self.auths.count():
@@ -127,7 +140,7 @@ class Voting(models.Model):
     def do_postproc(self):
         tally = self.tally
         options = self.question.options.all()
-
+        postproc_type = self.postproc_type
         opts = []
         for opt in options:
             if isinstance(tally, list):
@@ -140,7 +153,7 @@ class Voting(models.Model):
                 'votes': votes
             })
 
-        data = { 'type': 'PARIDAD', 'options': opts }
+        data = { 'type': postproc_type, 'options': opts }
         postp = mods.post('postproc', json=data)
 
         self.postproc = postp
