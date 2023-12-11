@@ -11,8 +11,11 @@ class QuestionOptionAdminForm(forms.ModelForm):
         question = self.cleaned_data['question']
         number = self.cleaned_data['number']
 
-        if question.yes_no and option not in ['', 'Yes', 'No']:
-            raise forms.ValidationError("Option must be empty. Don't write")
+        if self.instance and self.instance.pk:
+            if question.yes_no and option not in ['', 'Yes', 'No']:
+                raise forms.ValidationError("Option must be empty. Don't write")
             
-        
+        else: 
+            if question.yes_no and option not in ['']:
+                raise forms.ValidationError("Option must be empty. Don't write")
         return option
