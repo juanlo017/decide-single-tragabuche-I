@@ -16,18 +16,25 @@
         <canvas id="myBarChart"></canvas>
     </div>
 
+    <!--{% for v in votings %}
+        data.labels.push('{{ v.name }}');
+        data.datasets[0].data.push({{ v.votes }});
+    {% endfor %}-->
+
     <script>
         // Datos para el gráfico
         var data = {
-            labels: ['Categoría 1', 'Categoría 2', 'Categoría 3', 'Categoría 4', 'Categoría 5'],
-            datasets: [{
-                label: 'Datos de Ejemplo',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-                data: [12, 19, 3, 5, 2], // Datos de las barras
-            }]
+            labels: [],
+            datasets: [{}]
         };
+
+        var votings = document.getElementById('votings').value;
+
+        //votings es un diccionario
+        for (var i = 0; i < votings.length; i++) {
+            data.labels.push(votings);
+            data.datasets[0].data.push(votings[i].votes);
+        }
 
         // Opciones de configuración del gráfico
         var options = {

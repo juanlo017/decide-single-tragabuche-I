@@ -15,6 +15,6 @@ def get_voting(voting_id):
         raise Http404("Voting does not exist")
 
 def general_stats(request):
-    #votings = get_all_votings()
+    votings = get_all_votings()
 
-    return render(request, 'stats/general.html')
+    return render(request, 'stats/general.html', {'votings': votings})
