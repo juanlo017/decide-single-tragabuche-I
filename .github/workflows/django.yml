@@ -8,9 +8,9 @@ on:
   push:
     branches:
       - master
-    workflow call:
+    workflow_call:
       secrets:
-        CODACY PROYECT TOKEN:
+        CODACY_PROJECT_TOKEN:
           required: true
 jobs:
   build:
@@ -50,6 +50,7 @@ jobs:
     - name: Run migrations (unnecessary)
       run: |
         cd decide
+        python manage.py makemigrations
         python manage.py migrate
     - name: Run tests
       run: |
