@@ -366,34 +366,6 @@ class QuestionsTests(StaticLiveServerTestCase):
 
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
 
-    def createYesOrNoQuestionSuccess2(self):
-        self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
-        self.cleaner.set_window_size(1280, 720)
-
-        self.cleaner.find_element(By.ID, "id_username").click()
-        self.cleaner.find_element(By.ID, "id_username").send_keys("decide")
-
-        self.cleaner.find_element(By.ID, "id_password").click()
-        self.cleaner.find_element(By.ID, "id_password").send_keys("decide")
-
-        self.cleaner.find_element(By.ID, "id_password").send_keys("Keys.ENTER")
-
-        self.cleaner.get(self.live_server_url+"/admin/voting/question/add/")
-        
-        self.cleaner.find_element(By.ID, "id_desc").click()
-        self.cleaner.find_element(By.ID, "id_desc").send_keys('Yes/No Test Question 2')
-        self.cleaner.find_element(By.ID, "id_options-0-number").click()
-        self.cleaner.find_element(By.ID, "id_options-0-number").send_keys('1')
-        self.cleaner.find_element(By.ID, "id_options-0-option").click()
-        self.cleaner.find_element(By.ID, "id_options-0-option").send_keys('Yes')
-        self.cleaner.find_element(By.ID, "id_options-1-number").click()
-        self.cleaner.find_element(By.ID, "id_options-1-number").send_keys('2')
-        self.cleaner.find_element(By.ID, "id_options-1-option").click()
-        self.cleaner.find_element(By.ID, "id_options-1-option").send_keys('No')
-        self.cleaner.find_element(By.NAME, "_save").click()
-
-        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
-
     def createYesOrNoQuestionFail(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
@@ -419,10 +391,9 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.cleaner.find_element(By.ID, "id_options-1-option").click()
         self.cleaner.find_element(By.ID, "id_options-1-option").send_keys('Fallo2')
         self.cleaner.find_element(By.NAME, "_save").click()
-
-        self.assertFalse(True, "Este test debe de fallar")
-        self.assertTrue(error_message = "Option must be empty. Don't write options if you select Yes or No Questions.")
-
+        
+        self.assertTrue(self.cleaner.find_element_by_xpath('/html/body/div/div[3]/div/div[1]/div/form/div/p').text == 'Please correct the errors below.')
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/add/")
 
 
     def createCensusEmptyError(self):
