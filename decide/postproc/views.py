@@ -43,16 +43,17 @@ class PostProcView(APIView):
         sorted_options = sorted(options, key=lambda x: x['votes'], reverse=True)
 
         # Initializamos diccionario contador
-        points = {opt['name']: 0 for opt in sorted_options}
-
+        out = []
         for rank, opt in enumerate(sorted_options):
             # Asignamos puntos en función del ranking
-            points[opt['name']] += (num_options - rank) * opt['votes']
-
-        sorted_points = sorted(points.items(), key=lambda x: x[1], reverse=True)
-
-        # Prepare the output
-        out = [{**opt, 'postproc': pts} for opt, pts in sorted_points]
+            borda_value = (num_options - rank) * opt['votes'] 
+            if borda_value < 0:
+                borda_value = 0
+            out.append({
+                **opt,
+                'postproc': borda_value,
+            })
+        out.sort(key=lambda x: -x['postproc'])
 
         return Response(out)
 
