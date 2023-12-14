@@ -316,6 +316,9 @@ class QuestionsTests(StaticLiveServerTestCase):
 
         self.base.tearDown()
 
+    # TEST CRUD PARA PREGUNTA ABIERTA
+
+    # Test CREATE
     def createOptionalQuestionSuccess(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
@@ -343,6 +346,58 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.cleaner.find_element(By.NAME, "_save").click()
 
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+
+    # Test READ
+    def readQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'Test')
+        question_option_1 = self.cleaner.find_element(by.ID, "id_options-0-option").text
+        self.assertEqual(question_option_1, 'test1')
+        question_option_2 = self.cleaner.find_element(by.ID, "id_options-1-option").text
+        self.assertEqual(question_option_2, 'test2')
+
+    # Test UPDATE
+    def updateQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('UPDATED Test')
+
+        self.cleaner.find_element(By.ID, "id_options-0-option").click()
+        self.cleaner.find_element(By.ID, "id_options-0-option").send_keys('UPDATED test1')
+
+        self.cleaner.find_element(By.ID, "id_options-1-option").click()
+        self.cleaner.find_element(By.ID, "id_options-1-option").send_keys('UPDATED test2')
+        
+        self.cleaner.find_element(By.NAME, "_save").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        
+        self.cleaner.find_element(By.LINK_TEXT, "UPDATED Test").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'UPDATED Test')
+        question_option_1 = self.cleaner.find_element(by.ID, "id_options-0-option").text
+        self.assertEqual(question_option_1, 'UPDATED test1')
+        question_option_2 = self.cleaner.find_element(by.ID, "id_options-1-option").text
+        self.assertEqual(question_option_2, 'UPDATED test2')
+
+    # Test DELETE
+    def deleteQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+        
+        self.cleaner.find_element(By.NAME, "delete").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertNotIn('Test', self.cleaner.page_source)
 
     # TEST CRUD PARA PREGUNTA YES/NO
 
