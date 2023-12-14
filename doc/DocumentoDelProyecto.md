@@ -10,7 +10,7 @@ Miembros del equipo
 =====================================
 
 | Miembro | Implicacion |
-| ------------- --------------------| ------------- |
+| ---------------------------------| ------------- |
 | Grosso Gómez de Terreros, Javier  | 10  |
 | Castro Vázquez, Jose  | 10  |
 | Sánchez Hossford, Alexander Alicia  | 10  |
