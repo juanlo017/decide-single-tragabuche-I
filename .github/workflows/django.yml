@@ -10,7 +10,7 @@ on:
       - master
   workflow_call:
     secrets:
-      CODACY_PROYECT_TOKEN:
+      CODACY_PROJECT_TOKEN:
         required: true
 jobs:
   build:
