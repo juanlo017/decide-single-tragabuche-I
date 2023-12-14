@@ -52,7 +52,7 @@ class PostProcView(APIView):
         sorted_points = sorted(points.items(), key=lambda x: x[1], reverse=True)
 
         # Prepare the output
-        out = [{'name': name, 'points': pts} for name, pts in sorted_points]
+        out = [{**opt, 'postproc': pts} for opt, pts in sorted_points]
 
         return Response(out)
 
