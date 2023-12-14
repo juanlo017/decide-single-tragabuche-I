@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.test import TestCase
+from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
 
@@ -343,6 +344,9 @@ class QuestionsTests(StaticLiveServerTestCase):
 
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
 
+    # TEST CRUD PARA PREGUNTA YES/NO
+
+    # Test CREATE
     def createYesOrNoQuestionSuccess(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
@@ -365,7 +369,45 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.cleaner.find_element(By.NAME, "_save").click()
 
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        # Con esto incluimos el Test de READ, ya que comprobamos que está en la lista de preguntas
+        self.assertIn('Yes/No Test Question', self.cleaner.page_source)
 
+    # Test READ
+    def readQuestionYesOrNoSuccess(self):
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'Yes/No Test Question')
+
+    # Test UPDATE
+    def updateQuestionYesOrNoSuccess(self):
+        
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('UPDATED Yes/No Test Question')
+        
+        self.cleaner.find_element(By.NAME, "_save").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertIn('UPDATED Yes/No Test Question', self.cleaner.page_source)
+
+    # Test DELETE
+    def deleteQuestionYesOrNoSuccess(self):
+        
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+        
+        self.cleaner.find_element(By.NAME, "delete").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertNotIn('Yes/No Test Question', self.cleaner.page_source)
+
+    # Test CREATE FAIL
     def createYesOrNoQuestionFail(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
@@ -394,6 +436,7 @@ class QuestionsTests(StaticLiveServerTestCase):
         
         self.assertTrue(self.cleaner.find_element_by_xpath('/html/body/div/div[3]/div/div[1]/div/form/div/p').text == 'Please correct the errors below.')
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/add/")
+
 
 
     def createCensusEmptyError(self):
