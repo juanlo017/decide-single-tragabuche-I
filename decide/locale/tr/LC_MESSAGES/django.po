@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-22 12:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: booth/templates/booth/booth.html:24
+msgid "Logout"
+msgstr "Çıkış Yap"
+
+#: booth/templates/booth/booth.html:29 booth/templates/booth/booth.html:110
+msgid "Login"
+msgstr "Giriş yapmak"
+
+#: booth/templates/booth/booth.html:75
+msgid "¡Debe iniciar sesión para poder acceder a la votación!"
+msgstr "Oylamaya erişebilmek için giriş yapmalısınız!"
+
+#: booth/templates/booth/booth.html:91
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: booth/templates/booth/booth.html:101
+msgid "Password"
+msgstr "Şifre"
+
+#: booth/templates/booth/booth.html:132
+msgid "Vote"
+msgstr "Oy"
+
+#: booth/templates/booth/booth.html:235 booth/templates/booth/booth.html:246
+#: booth/templates/booth/booth.html:282
+msgid "Error: "
+msgstr "Hata: "
+
+#: booth/templates/booth/booth.html:278
+msgid "Congratulations. Your vote has been sent"
+msgstr "Tebrikler. Oyunuz gönderildi"
+
+#: decide/settings.py:158
+msgid "English"
+msgstr "İngilizce"
+
+#: decide/settings.py:159
+msgid "Spanish"
+msgstr "İspanyol"
+
+#: decide/settings.py:160
+msgid "Italiano"
+msgstr "İtalyan"
+
+#: decide/settings.py:161
+msgid "French"
+msgstr "Fransızca"
+
+#: decide/settings.py:162
+msgid "Portuguese"
+msgstr "Portekizce"
+
+#: decide/settings.py:163
+msgid "German"
+msgstr "Almanca"
+
+#: decide/settings.py:164
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: decide/settings.py:165
+msgid "Catalan"
+msgstr "Katalanca"
+
+#: decide/settings.py:166
+msgid "Galician"
+msgstr "Galiçyaca"
+
+#: decide/settings.py:167
+msgid "Irish"
+msgstr "İrlandalı"
+
+#: decide/settings.py:168
+msgid "Scottish"
+msgstr "İskoç"
+
+#: decide/settings.py:169
+msgid "Turkish"
+msgstr "Türkçe"
+
+#: visualizer/templates/visualizer/visualizer.html:23
+msgid "Votación no comenzada"
+msgstr "Oylama başlamadı"
+
+#: visualizer/templates/visualizer/visualizer.html:24
+msgid "Votación en curso"
+msgstr "Oylama sürüyor"
+
+#: visualizer/templates/visualizer/visualizer.html:26
+msgid "Resultados:"
+msgstr "Sonuçlar:"
+
+#: visualizer/templates/visualizer/visualizer.html:31
+msgid "Opción"
+msgstr "Seçenek"
+
+#: visualizer/templates/visualizer/visualizer.html:32
+msgid "Puntuación"
+msgstr "Noktalama"
+
+#: visualizer/templates/visualizer/visualizer.html:33
+msgid "Votos"
+msgstr "Oylar"

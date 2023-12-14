@@ -5,7 +5,13 @@ on:
     branches:
       - master
       - develop
-
+  push:
+    branches:
+      - master
+    workflow call:
+      secrets:
+        CODACY PROYECT TOKEN:
+          required: true
 jobs:
   build:
 

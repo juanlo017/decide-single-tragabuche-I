@@ -101,3 +101,16 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
             msg = 'Action not found, try with start, stop or tally'
             st = status.HTTP_400_BAD_REQUEST
         return Response(msg, status=st)
+
+def create_yes_or_no_question(self):
+    option_yes = QuestionOption.objects.filter(question=self, option='Yes').first()
+    option_no = QuestionOption.objects.filter(question=self, option='No').first()
+
+    if option_yes is None and option_no is None:
+        msg = "Option must be 'Yes' or 'No'" 
+        st=status.HTTP_400_BAD_REQUEST
+
+    else: 
+        option_yes.save()
+        option_no.save()
+            
