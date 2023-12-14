@@ -8,10 +8,10 @@ on:
   push:
     branches:
       - master
-    workflow call:
-      secrets:
-        CODACY PROYECT TOKEN:
-          required: true
+  workflow_call:
+    secrets:
+      CODACY PROYECT TOKEN:
+        required: true
 jobs:
   build:
 
