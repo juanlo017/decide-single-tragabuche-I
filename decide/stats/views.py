@@ -17,4 +17,11 @@ def get_voting(voting_id):
 def general_stats(request):
     votings = get_all_votings()
 
-    return render(request, 'stats/general.html', {'votings': votings})
+    data = {}
+
+    #quiero desglosar los datos de cada votacion y asignarselos a data para que se los pase a la plantilla con el nombre de la votacion como key
+    for voting in votings:
+        print(f'{voting.get_votes(token="")}')
+        #data[voting.name] = {}
+
+    return render(request, 'stats/general.html', {'votings': data})
