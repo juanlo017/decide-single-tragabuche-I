@@ -5,21 +5,21 @@ from django.dispatch import receiver
 
 from base import mods
 from base.models import Auth, Key
-
+from django.utils.translation import gettext_lazy as _ 
 
 class Question(models.Model):
     desc = models.TextField()
 
     voting_types = [
-        ('OQ', 'Optional Quesrion'),
+        ('OQ', 'Optional Question'),
         ('YN', 'Yes/No Question'),
     ]
     #Ponemos que el typo por defecto sea OQ
-    types = models.CharField(max_length=10, choices=voting_types, default='OQ')
+    yes_no = models.BooleanField(default=False, verbose_name="Yes or No question type. Please, don't write in the options below")
 
-    def save(self):
-        super().save()
-        if self.types == 'YN':
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs) 
+        if self.yes_no:
             import voting.views
             voting.views.create_yes_or_no_question(self)
 
@@ -33,12 +33,8 @@ class QuestionOption(models.Model):
     option = models.TextField()
 
     def save(self):
-        #Si es YN pero las opciones no son Yes o No, da error.
-        if self.question.types == 'YN':
-            if self.option not in ['Yes', 'No']:
-                raise ValueError("For 'Yes/No' questions, option must be 'Sí' or 'No'.")
         if not self.number:
-            self.number = self.question.options.count() + 2
+            self.number = self.question.options.count() + 1
         return super().save()
 
     def __str__(self):
@@ -50,6 +46,17 @@ class Voting(models.Model):
     desc = models.TextField(blank=True, null=True)
     question = models.ForeignKey(Question, related_name='voting', on_delete=models.CASCADE)
 
+    class PostProcType(models.TextChoices):
+        IDENTITY = 'IDENTITY', _('Identity tally')
+        PARIDAD = 'PARIDAD', _('Parity tally')
+        BORDA = 'BORDA', _('Borda count tally')
+
+    postproc_type = models.CharField(
+        max_length=10,
+        choices=PostProcType.choices,
+        default=PostProcType.IDENTITY
+    )
+
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
 
@@ -58,6 +65,8 @@ class Voting(models.Model):
 
     tally = JSONField(blank=True, null=True)
     postproc = JSONField(blank=True, null=True)
+
+
 
     def create_pubkey(self):
         if self.pub_key or not self.auths.count():
@@ -127,7 +136,7 @@ class Voting(models.Model):
     def do_postproc(self):
         tally = self.tally
         options = self.question.options.all()
-
+        postproc_type = self.postproc_type
         opts = []
         for opt in options:
             if isinstance(tally, list):
@@ -140,7 +149,7 @@ class Voting(models.Model):
                 'votes': votes
             })
 
-        data = { 'type': 'PARIDAD', 'options': opts }
+        data = { 'type': postproc_type, 'options': opts }
         postp = mods.post('postproc', json=data)
 
         self.postproc = postp

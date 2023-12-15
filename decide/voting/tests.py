@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.test import TestCase
+from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
 
@@ -133,7 +134,8 @@ class VotingTestCase(BaseTestCase):
             'name': 'Example',
             'desc': 'Description example',
             'question': 'I want a ',
-            'question_opt': ['cat', 'dog', 'horse']
+            'question_opt': ['cat', 'dog', 'horse'],
+            'postproc_type': 'IDENTITY'
         }
 
         response = self.client.post('/voting/', data, format='json')
@@ -315,7 +317,10 @@ class QuestionsTests(StaticLiveServerTestCase):
 
         self.base.tearDown()
 
-    def createQuestionSuccess(self):
+    # TEST CRUD PARA PREGUNTA ABIERTA
+
+    # Test CREATE
+    def createOptionalQuestionSuccess(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
         self.cleaner.set_window_size(1280, 720)
 
@@ -342,6 +347,153 @@ class QuestionsTests(StaticLiveServerTestCase):
         self.cleaner.find_element(By.NAME, "_save").click()
 
         self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+
+    # Test READ
+    def readQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'Test')
+        question_option_1 = self.cleaner.find_element(by.ID, "id_options-0-option").text
+        self.assertEqual(question_option_1, 'test1')
+        question_option_2 = self.cleaner.find_element(by.ID, "id_options-1-option").text
+        self.assertEqual(question_option_2, 'test2')
+
+    # Test UPDATE
+    def updateQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('UPDATED Test')
+
+        self.cleaner.find_element(By.ID, "id_options-0-option").click()
+        self.cleaner.find_element(By.ID, "id_options-0-option").send_keys('UPDATED test1')
+
+        self.cleaner.find_element(By.ID, "id_options-1-option").click()
+        self.cleaner.find_element(By.ID, "id_options-1-option").send_keys('UPDATED test2')
+        
+        self.cleaner.find_element(By.NAME, "_save").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        
+        self.cleaner.find_element(By.LINK_TEXT, "UPDATED Test").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'UPDATED Test')
+        question_option_1 = self.cleaner.find_element(by.ID, "id_options-0-option").text
+        self.assertEqual(question_option_1, 'UPDATED test1')
+        question_option_2 = self.cleaner.find_element(by.ID, "id_options-1-option").text
+        self.assertEqual(question_option_2, 'UPDATED test2')
+
+    # Test DELETE
+    def deleteQuestionOptionalSuccess(self):
+        self.createOptionalQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Test").click()
+        
+        self.cleaner.find_element(By.NAME, "delete").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertNotIn('Test', self.cleaner.page_source)
+
+    # TEST CRUD PARA PREGUNTA YES/NO
+
+    # Test CREATE
+    def createYesOrNoQuestionSuccess(self):
+        self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
+        self.cleaner.set_window_size(1280, 720)
+
+        self.cleaner.find_element(By.ID, "id_username").click()
+        self.cleaner.find_element(By.ID, "id_username").send_keys("decide")
+
+        self.cleaner.find_element(By.ID, "id_password").click()
+        self.cleaner.find_element(By.ID, "id_password").send_keys("decide")
+
+        self.cleaner.find_element(By.ID, "id_password").send_keys("Keys.ENTER")
+
+        self.cleaner.get(self.live_server_url+"/admin/voting/question/add/")
+        
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('Yes/No Test Question')
+        
+        self.cleaner.find_element(By.ID, "id_yes_no").click()
+
+        self.cleaner.find_element(By.NAME, "_save").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        # Con esto incluimos el Test de READ, ya que comprobamos que está en la lista de preguntas
+        self.assertIn('Yes/No Test Question', self.cleaner.page_source)
+
+    # Test READ
+    def readQuestionYesOrNoSuccess(self):
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+
+        question_desc = self.cleaner.find_element(by.ID, "id_desc").text
+        self.assertEqual(question_desc, 'Yes/No Test Question')
+
+    # Test UPDATE
+    def updateQuestionYesOrNoSuccess(self):
+        
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('UPDATED Yes/No Test Question')
+        
+        self.cleaner.find_element(By.NAME, "_save").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertIn('UPDATED Yes/No Test Question', self.cleaner.page_source)
+
+    # Test DELETE
+    def deleteQuestionYesOrNoSuccess(self):
+        
+        self.createYesOrNoQuestionSuccess()
+
+        self.cleaner.find_element(By.LINK_TEXT, "Yes/No Test Question").click()
+        
+        self.cleaner.find_element(By.NAME, "delete").click()
+
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/")
+        self.assertNotIn('Yes/No Test Question', self.cleaner.page_source)
+
+    # Test CREATE FAIL
+    def createYesOrNoQuestionFail(self):
+        self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")
+        self.cleaner.set_window_size(1280, 720)
+
+        self.cleaner.find_element(By.ID, "id_username").click()
+        self.cleaner.find_element(By.ID, "id_username").send_keys("decide")
+
+        self.cleaner.find_element(By.ID, "id_password").click()
+        self.cleaner.find_element(By.ID, "id_password").send_keys("decide")
+
+        self.cleaner.find_element(By.ID, "id_password").send_keys("Keys.ENTER")
+
+        self.cleaner.get(self.live_server_url+"/admin/voting/question/add/")
+        
+        self.cleaner.find_element(By.ID, "id_desc").click()
+        self.cleaner.find_element(By.ID, "id_desc").send_keys('Yes/No Test Question 3')
+        self.cleaner.find_element(By.ID, "id_options-0-number").click()
+        self.cleaner.find_element(By.ID, "id_options-0-number").send_keys('1')
+        self.cleaner.find_element(By.ID, "id_options-0-option").click()
+        self.cleaner.find_element(By.ID, "id_options-0-option").send_keys('Fallo1')
+        self.cleaner.find_element(By.ID, "id_options-1-number").click()
+        self.cleaner.find_element(By.ID, "id_options-1-number").send_keys('2')
+        self.cleaner.find_element(By.ID, "id_options-1-option").click()
+        self.cleaner.find_element(By.ID, "id_options-1-option").send_keys('Fallo2')
+        self.cleaner.find_element(By.NAME, "_save").click()
+        
+        self.assertTrue(self.cleaner.find_element_by_xpath('/html/body/div/div[3]/div/div[1]/div/form/div/p').text == 'Please correct the errors below.')
+        self.assertTrue(self.cleaner.current_url == self.live_server_url+"/admin/voting/question/add/")
+
+
 
     def createCensusEmptyError(self):
         self.cleaner.get(self.live_server_url+"/admin/login/?next=/admin/")

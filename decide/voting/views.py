@@ -31,17 +31,18 @@ class VotingView(generics.ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         self.permission_classes = (UserIsStaff,)
         self.check_permissions(request)
-        for data in ['name', 'desc', 'question', 'question_opt']:
+        for data in ['name', 'desc', 'question', 'question_opt', 'postproc_type']:
             if not data in request.data:
                 return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
         question = Question(desc=request.data.get('question'))
         question.save()
+
         for idx, q_opt in enumerate(request.data.get('question_opt')):
             opt = QuestionOption(question=question, option=q_opt, number=idx)
             opt.save()
         voting = Voting(name=request.data.get('name'), desc=request.data.get('desc'),
-                question=question)
+                question=question, postproc_type = request.data.get('postproc_type'))
         voting.save()
 
         auth, _ = Auth.objects.get_or_create(url=settings.BASEURL,
@@ -103,14 +104,13 @@ class VotingUpdate(generics.RetrieveUpdateDestroyAPIView):
         return Response(msg, status=st)
 
 def create_yes_or_no_question(self):
-    option_yes = QuestionOption.objects.filter(question=self, option='Yes').first()
-    option_no = QuestionOption.objects.filter(question=self, option='No').first()
+    all_options = QuestionOption.objects.all().filter(question=self)
+    for opt in all_options:
+        opt.delete()
 
-    if option_yes is None and option_no is None:
-        msg = "Option must be 'Yes' or 'No'" 
-        st=status.HTTP_400_BAD_REQUEST
+    option_yes = QuestionOption(option='Yes', number=1, question=self)
+    option_no = QuestionOption(option='No', number=2, question=self)
 
-    else: 
-        option_yes.save()
-        option_no.save()
+    option_yes.save()
+    option_no.save()
             
