@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-22 12:58+0000\n"
+"POT-Creation-Date: 2023-12-17 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: authentication/templates/authentication/login.html:7
+#: authentication/templates/authentication/login.html:10
+#: authentication/templates/authentication/login.html:26
+msgid "Iniciar Sesión"
+msgstr "Commencer la session"
+
+#: authentication/templates/authentication/login.html:14
+#: authentication/templates/authentication/register.html:15
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
+msgstr "nom d'utilisateur"
+
+#: authentication/templates/authentication/login.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Password:"
+msgstr "mot de passe"
+
+#: authentication/templates/authentication/register.html:8
+msgid "Registro de Usuario"
+msgstr "Registre des utilisateurs"
+
+#: authentication/templates/authentication/register.html:11
+msgid "Registro"
+msgstr "Enregistrer"
+
+#: authentication/templates/authentication/register.html:21
+msgid "Contraseña:"
+msgstr "Mot de passe:"
+
+#: authentication/templates/authentication/register.html:25
+msgid "Confirmar Contraseña:"
+msgstr "Confirmer mot de passe:"
+
+#: authentication/templates/authentication/register.html:31
+msgid "Email:"
+msgstr "E-mail:"
+
+#: authentication/templates/authentication/register.html:38
+msgid "First Name:"
+msgstr "Prénom:"
+
+#: authentication/templates/authentication/register.html:44
+msgid "Last Name:"
+msgstr "Nom de famille:"
+
+#: authentication/templates/authentication/register.html:50
+msgid "Registrarse"
+msgstr "Enregistrement"
+
 #: booth/templates/booth/booth.html:24
 msgid "Logout"
 msgstr "Se déconnecter"
@@ -121,3 +173,15 @@ msgstr "Ponctuation"
 #: visualizer/templates/visualizer/visualizer.html:33
 msgid "Votos"
 msgstr "Votes"
+
+#: voting/models.py:50
+msgid "Identity tally"
+msgstr "Décompte d'identité"
+
+#: voting/models.py:51
+msgid "Parity tally"
+msgstr "Compte de parité"
+
+#: voting/models.py:52
+msgid "Borda count tally"
+msgstr "Décompte de Borda"
