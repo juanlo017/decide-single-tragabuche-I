@@ -9,6 +9,30 @@ from base import mods
 
 from django.utils.translation import activate,deactivate, gettext_lazy as _ 
 
+import os
+from django.core.management import call_command
+from django.utils import translation
+
+class TraduccionesAusenciaTest(TestCase):
+    #Vamos a probar si las traducciones en gallego tienen algun segmento vacio
+
+    def setUp(self):
+        #Configuramos la ruta del archivo .po a probar, el gallego
+        self.po_file_path = os.path.join("locale/gl/LC_MESSAGES","django.po")
+
+
+    def test_comprueba_si_faltan_traducciones(self):
+        #comprueba que esten traducidas todas las palabras del archivo .po
+        print(f"Abriendo el archivo .po: {self.po_file_path}")
+        with open(self.po_file_path, "r", encoding="utf-8") as po_file:
+            lineas = po_file.readlines()
+            for i, linea in enumerate(lineas):
+                if linea.startswith("msgid"):
+                    msgid_linea = linea.strip()
+                    msgstr_linea = lineas[i + 1].strip()
+                    self.assertNotEqual(msgstr_linea,'""',f"Encontrada linea sin traducir: {msgid_linea}")
+
+
 class TraduccionesTest(TestCase):
     def test_traducciones_español(self):
         activate('es')
