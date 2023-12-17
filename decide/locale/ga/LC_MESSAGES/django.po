@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-22 12:59+0000\n"
+"POT-Creation-Date: 2023-12-17 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
 "4);\n"
+
+#: authentication/templates/authentication/login.html:7
+#: authentication/templates/authentication/login.html:10
+#: authentication/templates/authentication/login.html:26
+msgid "Iniciar Sesión"
+msgstr "Logáil isteach"
+
+#: authentication/templates/authentication/login.html:14
+#: authentication/templates/authentication/register.html:15
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
+msgstr "Ainm úsáideora"
+
+#: authentication/templates/authentication/login.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Password:"
+msgstr "Pasfhocal"
+
+#: authentication/templates/authentication/register.html:8
+msgid "Registro de Usuario"
+msgstr "Clár úsáideora"
+
+#: authentication/templates/authentication/register.html:11
+msgid "Registro"
+msgstr "Taifead"
+
+#: authentication/templates/authentication/register.html:21
+msgid "Contraseña:"
+msgstr "Pasfhocal:"
+
+#: authentication/templates/authentication/register.html:25
+msgid "Confirmar Contraseña:"
+msgstr "Deimhnigh Pasfhocal:"
+
+#: authentication/templates/authentication/register.html:31
+msgid "Email:"
+msgstr "Ríomhphost:"
+
+#: authentication/templates/authentication/register.html:38
+msgid "First Name:"
+msgstr "Ainm:"
+
+#: authentication/templates/authentication/register.html:44
+msgid "Last Name:"
+msgstr "Sloinne:"
+
+#: authentication/templates/authentication/register.html:50
+msgid "Registrarse"
+msgstr "Seiceáil isteach"
+
 #: booth/templates/booth/booth.html:24
 msgid "Logout"
 msgstr "Logáil Amach"
@@ -122,3 +174,15 @@ msgstr "Poncaíocht"
 #: visualizer/templates/visualizer/visualizer.html:33
 msgid "Votos"
 msgstr "Vótaí"
+
+#: voting/models.py:50
+msgid "Identity tally"
+msgstr "Scór aitheantais"
+
+#: voting/models.py:51
+msgid "Parity tally"
+msgstr "Scóráil paireacht"
+
+#: voting/models.py:52
+msgid "Borda count tally"
+msgstr "Scór comhaireamh Borda"
