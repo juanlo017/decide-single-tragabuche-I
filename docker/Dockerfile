@@ -18,7 +18,7 @@ WORKDIR /app/decide
 # local settings.py
 ADD docker-settings.py /app/decide/local_settings.py
 
-
+RUN ./manage.py makemigrations
 RUN ./manage.py collectstatic
 RUN ./manage.py compilemessages
 
