@@ -63,7 +63,7 @@ msgstr "Nom:"
 
 #: authentication/templates/authentication/register.html:44
 msgid "Last Name:"
-msgstr "Last Name:"
+msgstr "Cognoms:"
 
 #: authentication/templates/authentication/register.html:50
 msgid "Registrarse"
