@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load i18n static %}
 <head>
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
+    <title>{% trans "Registro de Usuario" %}</title>
 </head>
 <body>
-  <h2>Registro</h2>
+  <h2>{% trans "Registro" %}</h2>
   <form method="post" action="{% url 'register' %}">
     {% csrf_token %}
     
-    <label for="{{ form.username.id_for_label }}">Username:</label>
+    <label for="{{ form.username.id_for_label }}">{% trans "Username:" %}</label>
     {{ form.username }}
     {{ form.username.errors }}
     
     <br>
     
-    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+    <label for="{{ form.password1.id_for_label }}">{% trans "Contraseña:" %}</label>
     {{ form.password1 }}
     {{ form.password1.errors }}
 
-    <label for="{{ form.password2.id_for_label }}">Confirmar Contraseña:</label>
+    <label for="{{ form.password2.id_for_label }}">{% trans "Confirmar Contraseña:" %}</label>
     {{ form.password2 }}
     {{ form.password2.errors }}
 
     <br>
     
-    <label for="{{ form.email.id_for_label }}">Email:</label>
+    <label for="{{ form.email.id_for_label }}">{% trans "Email:" %}</label>
     {{ form.email }}
     {{ form.email.errors }}
     
     <br>
 
     
-    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+    <label for="{{ form.first_name.id_for_label }}">{% trans "First Name:" %}</label>
     {{ form.first_name }}
     {{ form.first_name.errors }}
     
     <br>
 
-    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+    <label for="{{ form.last_name.id_for_label }}">{% trans "Last Name:" %}</label>
     {{ form.last_name }}
     {{ form.last_name.errors }}
     
     <br>
     
-    <button type="submit">Registrarse</button>
+    <button type="submit">{% trans "Registrarse" %}</button>
   </form>
+
+
+  <!-- Selector de idioma-->
+  <form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to}}">
+    <select name="language" id="id_language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+            {{ language.name_local }} ({{ language.code }})
+        </option>
+        {% endfor %}
+    </select>
+</form>
 </body>
 </html>
 
