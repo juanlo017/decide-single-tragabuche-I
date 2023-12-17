@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-22 12:58+0000\n"
+"POT-Creation-Date: 2023-12-17 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: authentication/templates/authentication/login.html:7
+#: authentication/templates/authentication/login.html:10
+#: authentication/templates/authentication/login.html:26
+msgid "Iniciar Sesión"
+msgstr "Anmeldung"
+
+#: authentication/templates/authentication/login.html:14
+#: authentication/templates/authentication/register.html:15
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
+msgstr "Nutzername"
+
+#: authentication/templates/authentication/login.html:20
+#, fuzzy
+#| msgid "Password"
+msgid "Password:"
+msgstr "Passwort"
+
+#: authentication/templates/authentication/register.html:8
+msgid "Registro de Usuario"
+msgstr "Benutzerregister"
+
+#: authentication/templates/authentication/register.html:11
+msgid "Registro"
+msgstr "Aufzeichnen"
+
+#: authentication/templates/authentication/register.html:21
+msgid "Contraseña:"
+msgstr "Passwort:"
+
+#: authentication/templates/authentication/register.html:25
+msgid "Confirmar Contraseña:"
+msgstr "Bestätige das Passwort:"
+
+#: authentication/templates/authentication/register.html:31
+msgid "Email:"
+msgstr "Email:"
+
+#: authentication/templates/authentication/register.html:38
+msgid "First Name:"
+msgstr "Vorname:"
+
+#: authentication/templates/authentication/register.html:44
+msgid "Last Name:"
+msgstr "Familienname, Nachname:"
+
+#: authentication/templates/authentication/register.html:50
+msgid "Registrarse"
+msgstr "Einchecken"
+
 #: booth/templates/booth/booth.html:24
 msgid "Logout"
 msgstr "Ausloggen"
@@ -121,3 +173,15 @@ msgstr "Interpunktion"
 #: visualizer/templates/visualizer/visualizer.html:33
 msgid "Votos"
 msgstr "Stimmen"
+
+#: voting/models.py:50
+msgid "Identity tally"
+msgstr "Identitätsliste"
+
+#: voting/models.py:51
+msgid "Parity tally"
+msgstr "Paritätsbilanz"
+
+#: voting/models.py:52
+msgid "Borda count tally"
+msgstr "Borda zählt"

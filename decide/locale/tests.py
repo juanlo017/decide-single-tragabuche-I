@@ -40,6 +40,21 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opción', _('Opción'))
         self.assertEqual('Puntuación', _('Puntuación'))
         self.assertEqual('Votos', _('Votos'))
+
+        self.assertEqual('Iniciar Sesión', _('Iniciar Sesión'))
+        self.assertEqual('Registro de Usuario', _('Registro de Usuario')) 
+        self.assertEqual('Registro', _('Registro')) 
+        self.assertEqual('Contraseña:', _('Contraseña:')) 
+        self.assertEqual('Confirmar Contraseña:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Correo electrónico:', _('Email:')) 
+        self.assertEqual('Nombre', _('First Name:')) 
+        self.assertEqual('Apellidos', _('Last Name:')) 
+        self.assertEqual('Registrarse', _('Registrarse')) 
+        self.assertEqual('Recuento de identidad', _('Identity tally')) 
+        self.assertEqual('Recuento de paridad', _('Parity tally')) 
+        self.assertEqual('Recuento de borda', _('Borda count tally')) 
+        
+        
         deactivate()
 
     def test_traducciones_ingles(self):
@@ -72,6 +87,21 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Option', _('Opción'))
         self.assertEqual('Score', _('Puntuación'))
         self.assertEqual('Votes', _('Votos'))
+
+        self.assertEqual('Log in', _('Iniciar Sesión'))
+        self.assertEqual('User register', _('Registro de Usuario')) 
+        self.assertEqual('Registration', _('Registro')) 
+        self.assertEqual('Password:', _('Contraseña:')) 
+        self.assertEqual('Confirm Password:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Email:', _('Email:')) 
+        self.assertEqual('First Name:', _('First Name:')) 
+        self.assertEqual('Last Name:', _('Last Name:')) 
+        self.assertEqual('Check in', _('Registrarse')) 
+        self.assertEqual('Identity tally', _('Identity tally')) 
+        self.assertEqual('Parity tally', _('Parity tally')) 
+        self.assertEqual('Borda count tally', _('Borda count tally')) 
+        
+
         deactivate()
 
     def test_traducciones_catalan(self):
@@ -104,6 +134,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opció', _('Opción'))
         self.assertEqual('Puntuació', _('Puntuación'))
         self.assertEqual('Vots', _('Votos'))
+
+        self.assertEqual('Iniciar Sessió', _('Iniciar Sesión'))
+        self.assertEqual("Registre d'usuari", _('Registro de Usuario')) 
+        self.assertEqual('Registre', _('Registro')) 
+        self.assertEqual('Contrasenya:', _('Contraseña:')) 
+        self.assertEqual('Confirmar Contrasenya:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Correu electrònic:', _('Email:')) 
+        self.assertEqual('Nom:', _('First Name:')) 
+        self.assertEqual('Cognoms:', _('Last Name:')) 
+        self.assertEqual('Registrar-se', _('Registrarse')) 
+        self.assertEqual("Recompte d'identitat", _('Identity tally')) 
+        self.assertEqual("Recompte de paritat", _('Parity tally')) 
+        self.assertEqual("Recompte de borda", _('Borda count tally')) 
+        
         deactivate()
 
 
@@ -137,6 +181,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Möglichkeit', _('Opción'))
         self.assertEqual('Interpunktion', _('Puntuación'))
         self.assertEqual('Stimmen', _('Votos'))
+
+        self.assertEqual('Anmeldung', _('Iniciar Sesión'))
+        self.assertEqual('Benutzerregister', _('Registro de Usuario')) 
+        self.assertEqual('Aufzeichnen', _('Registro')) 
+        self.assertEqual('Passwort:', _('Contraseña:')) 
+        self.assertEqual('Bestätige das Passwort:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Email:', _('Email:')) 
+        self.assertEqual('Vorname:', _('First Name:')) 
+        self.assertEqual('Familienname, Nachname:', _('Last Name:')) 
+        self.assertEqual('Einchecken', _('Registrarse')) 
+        self.assertEqual('Identitätsliste', _('Identity tally')) 
+        self.assertEqual('Paritätsbilanz', _('Parity tally')) 
+        self.assertEqual('Borda zählt', _('Borda count tally')) 
+        
         deactivate()
 
     def test_traducciones_esperanto(self):
@@ -169,6 +227,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opcio', _('Opción'))
         self.assertEqual('Interpunkcio', _('Puntuación'))
         self.assertEqual('Voĉdonoj', _('Votos'))
+
+        self.assertEqual('Ensaluti', _('Iniciar Sesión'))
+        self.assertEqual('Registro de uzantoj', _('Registro de Usuario')) 
+        self.assertEqual('Rekordo', _('Registro')) 
+        self.assertEqual('Pasvorto:', _('Contraseña:')) 
+        self.assertEqual('Konfirmu pasvorton:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Retpoŝto:', _('Email:')) 
+        self.assertEqual('Antaŭnomo:', _('First Name:')) 
+        self.assertEqual('Familia nomo:', _('Last Name:')) 
+        self.assertEqual('Kontrolu', _('Registrarse')) 
+        self.assertEqual('Identeca kalkulo', _('Identity tally')) 
+        self.assertEqual('Pareca kalkulo', _('Parity tally')) 
+        self.assertEqual('Borda kalkulkalkulo', _('Borda count tally')) 
+        
         deactivate()
 
     def test_traducciones_frances(self):
@@ -201,6 +273,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Option', _('Opción'))
         self.assertEqual('Ponctuation', _('Puntuación'))
         self.assertEqual('Votes', _('Votos'))
+
+        self.assertEqual('Commencer la session', _('Iniciar Sesión'))
+        self.assertEqual('Registre des utilisateurs', _('Registro de Usuario')) 
+        self.assertEqual('Enregistrer', _('Registro')) 
+        self.assertEqual('Mot de passe:', _('Contraseña:')) 
+        self.assertEqual('Confirmer mot de passe:', _('Confirmar Contraseña:')) 
+        self.assertEqual('E-mail:', _('Email:')) 
+        self.assertEqual('Prénom:', _('First Name:')) 
+        self.assertEqual('Nom de famille:', _('Last Name:')) 
+        self.assertEqual('Enregistrement', _('Registrarse')) 
+        self.assertEqual("Décompte d'identité", _('Identity tally')) 
+        self.assertEqual('Compte de parité', _('Parity tally')) 
+        self.assertEqual('Décompte de Borda', _('Borda count tally')) 
+        
         deactivate()
 
     def test_traducciones_italiano(self):
@@ -233,6 +319,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opzione', _('Opción'))
         self.assertEqual('Punteggiatura', _('Puntuación'))
         self.assertEqual('Voti', _('Votos'))
+
+        self.assertEqual('Login', _('Iniciar Sesión'))
+        self.assertEqual('Registro utente', _('Registro de Usuario')) 
+        self.assertEqual('Documentazione', _('Registro')) 
+        self.assertEqual("Parola d'ordine:", _('Contraseña:')) 
+        self.assertEqual('Conferma password:', _('Confirmar Contraseña:')) 
+        self.assertEqual('E-mail:', _('Email:')) 
+        self.assertEqual('Nome di battesimo:', _('First Name:')) 
+        self.assertEqual('Cognome:', _('Last Name:')) 
+        self.assertEqual('Registrare', _('Registrarse')) 
+        self.assertEqual("Conteggio dell'identità", _('Identity tally')) 
+        self.assertEqual('Conteggio della parità', _('Parity tally')) 
+        self.assertEqual('Conteggio del conteggio di Borda', _('Borda count tally')) 
+        
         deactivate()
 
 
@@ -266,6 +366,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opção', _('Opción'))
         self.assertEqual('Pontuação', _('Puntuación'))
         self.assertEqual('Votos', _('Votos'))
+
+        self.assertEqual('Iniciar sessão', _('Iniciar Sesión'))
+        self.assertEqual('Cadastro de usuário', _('Registro de Usuario')) 
+        self.assertEqual('Registro', _('Registro')) 
+        self.assertEqual('Senha:', _('Contraseña:')) 
+        self.assertEqual('Confirmar senha:', _('Confirmar Contraseña:')) 
+        self.assertEqual('E-mail:', _('Email:')) 
+        self.assertEqual('Primeiro nome:', _('First Name:')) 
+        self.assertEqual('Sobrenome:', _('Last Name:')) 
+        self.assertEqual('Check-in', _('Registrarse')) 
+        self.assertEqual('Contagem de identidade', _('Identity tally')) 
+        self.assertEqual('Contagem de paridade', _('Parity tally')) 
+        self.assertEqual('Contagem de Borda', _('Borda count tally')) 
+        
         deactivate()
 
 
@@ -299,6 +413,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Rogha', _('Opción'))
         self.assertEqual('Poncaíocht', _('Puntuación'))
         self.assertEqual('Vótaí', _('Votos'))
+
+        self.assertEqual('Logáil isteach', _('Iniciar Sesión'))
+        self.assertEqual('Clár úsáideora', _('Registro de Usuario')) 
+        self.assertEqual('Taifead', _('Registro')) 
+        self.assertEqual('Pasfhocal:', _('Contraseña:')) 
+        self.assertEqual('Deimhnigh Pasfhocal:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Ríomhphost:', _('Email:')) 
+        self.assertEqual('Ainm:', _('First Name:')) 
+        self.assertEqual('Sloinne:', _('Last Name:')) 
+        self.assertEqual('Seiceáil isteach', _('Registrarse')) 
+        self.assertEqual('Scór aitheantais', _('Identity tally')) 
+        self.assertEqual('Scóráil paireacht', _('Parity tally')) 
+        self.assertEqual('Scór comhaireamh Borda', _('Borda count tally')) 
+        
         deactivate()
 
 
@@ -332,6 +460,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Roghainn', _('Opción'))
         self.assertEqual('Puingeachadh', _('Puntuación'))
         self.assertEqual('Bhòtaichean', _('Votos'))
+
+        self.assertEqual('Log a-steach', _('Iniciar Sesión'))
+        self.assertEqual('Clàr luchd-cleachdaidh', _('Registro de Usuario')) 
+        self.assertEqual('Clàr', _('Registro')) 
+        self.assertEqual('Facal-faire:', _('Contraseña:')) 
+        self.assertEqual('Dearbh am facal-faire:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Post-d:', _('Email:')) 
+        self.assertEqual('A’ chiad ainm:', _('First Name:')) 
+        self.assertEqual('Ainm deireannach:', _('Last Name:')) 
+        self.assertEqual('Dèan clàradh', _('Registrarse')) 
+        self.assertEqual('Cunntas dearbh-aithne', _('Identity tally')) 
+        self.assertEqual('Cunntas co-ionannachd', _('Parity tally')) 
+        self.assertEqual('Cunntas cunntais obair-ghrèis', _('Borda count tally')) 
+        
         deactivate()
 
     def test_traducciones_turco(self):
@@ -364,6 +506,20 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Seçenek', _('Opción'))
         self.assertEqual('Noktalama', _('Puntuación'))
         self.assertEqual('Oylar', _('Votos'))
+
+        self.assertEqual('Giriş yapmak', _('Iniciar Sesión'))
+        self.assertEqual('Kullanıcı kaydı', _('Registro de Usuario')) 
+        self.assertEqual('Kayıt', _('Registro')) 
+        self.assertEqual('Şifre:', _('Contraseña:')) 
+        self.assertEqual('Şifreyi Onayla:', _('Confirmar Contraseña:')) 
+        self.assertEqual('E-posta:', _('Email:')) 
+        self.assertEqual('İlk adı:', _('First Name:')) 
+        self.assertEqual('Soy isim:', _('Last Name:')) 
+        self.assertEqual('Giriş', _('Registrarse')) 
+        self.assertEqual('Kimlik çetelesi', _('Identity tally')) 
+        self.assertEqual('Parite çetelesi', _('Parity tally')) 
+        self.assertEqual('Borda sayımı çetelesi', _('Borda count tally')) 
+        
         deactivate()
 
     def test_traducciones_gallego(self):
@@ -396,4 +552,18 @@ class TraduccionesTest(TestCase):
         self.assertEqual('Opción', _('Opción'))
         self.assertEqual('A puntuación', _('Puntuación'))
         self.assertEqual('Votos', _('Votos'))
+
+        self.assertEqual('Acceder', _('Iniciar Sesión'))
+        self.assertEqual('Rexistro de usuarios', _('Registro de Usuario')) 
+        self.assertEqual('Gravar', _('Registro')) 
+        self.assertEqual('Contrasinal:', _('Contraseña:')) 
+        self.assertEqual('Confirme o contrasinal:', _('Confirmar Contraseña:')) 
+        self.assertEqual('Correo electrónico:', _('Email:')) 
+        self.assertEqual('Nome:', _('First Name:')) 
+        self.assertEqual('Apelido:', _('Last Name:')) 
+        self.assertEqual('Check in', _('Registrarse')) 
+        self.assertEqual('Conta de identidade', _('Identity tally')) 
+        self.assertEqual('Conto de paridade', _('Parity tally')) 
+        self.assertEqual('Borda conta conta', _('Borda count tally')) 
+        
         deactivate()
