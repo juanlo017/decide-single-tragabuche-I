@@ -75,7 +75,6 @@ class UserRegistrationForm(UserCreationForm):
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
-        print(form.errors)
         if form.is_valid():
             form.save()
             return redirect('/admin')
@@ -86,8 +85,6 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
-        print(form.is_valid())
-        print(form.errors)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
