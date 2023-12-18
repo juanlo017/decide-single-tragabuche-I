@@ -516,3 +516,24 @@ python3 manage.py test locale
 '''
 
 
+Test de selenium
+--------------------------
+
+Voy a poner de ejemplo el test dentro de la carpeta locale, pero estas instrucciones son extendibles a cualquier carpeta que tenga tests que usen selenium
+Primero:
+tener instalado chromium por medio del siguiente comando:
+
+    sudo apt install chromium-browser chromium-chromedriver
+
+Posteriormente, ejecutar la aplicación con el comando:
+
+   manage.py runserver
+
+Despues de eso, ejecutamos todos los tests de locale con el siguiente comando:
+
+    manage.py test locale
+
+Y asi se ejecutan tanto los tests dentro del archivo tests.py como los tests de selenium (que han de ser localizados en un archivo llamado test_selenium.py dentro de sus respectivos modulos). 
+
+
+
