@@ -157,3 +157,17 @@ class RegistrationTest(TestCase):
         response = self.client.post(reverse('register'), data)
         self.assertContains(response, 'This password is too common.')
         self.assertContains(response, 'This field is required.')
+
+    def test_registration_existing_user_blank_password2_invalid_email(self):
+        # Intentar registrar un usuario con una contraseña débil
+        User.objects.create_user(username='weakuser', password='testpass')
+        data = {
+            'username': 'weakuser',
+            'password1': '123456',  # Contraseña débil
+            'password2': '',
+            'email': 'weakuserexample.com',
+        }
+        response = self.client.post(reverse('register'), data)
+        self.assertContains(response, 'A user with that username already exists.')
+        self.assertContains(response, 'This field is required.')
+        self.assertContains(response, 'Enter a valid email address.')
