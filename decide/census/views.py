@@ -143,6 +143,10 @@ def import_xslx(request):
                     )
             value.save()
 
+        else:
+            census = Census.objects.all()
+            return render(request, census, 'census_details.html')
+
     return render(request, 'importer.html')
 
 class CensusCreate(generics.ListCreateAPIView):
