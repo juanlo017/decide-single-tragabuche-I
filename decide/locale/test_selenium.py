@@ -35,7 +35,7 @@ class TraduccionesUITestCase(unittest.TestCase):
         self.selector_idioma(selector_de_idioma,"en")
 
         #comprueba la traduccion al ingles
-        expected_text_en = "Registration"
+        expected_text_en = "Access"
         element_en = self.driver.find_element(By.TAG_NAME, "h2")
         actual_text_en = element_en.text
         self.assertEqual(actual_text_en,expected_text_en)
