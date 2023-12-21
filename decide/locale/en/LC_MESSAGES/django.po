@@ -43,7 +43,7 @@ msgstr "User register"
 
 #: authentication/templates/authentication/register.html:11
 msgid "Registro"
-msgstr "Registration"
+msgstr "Access"
 
 #: authentication/templates/authentication/register.html:21
 msgid "Contraseña:"

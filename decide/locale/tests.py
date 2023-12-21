@@ -114,7 +114,7 @@ class TraduccionesTest(TestCase):
 
         self.assertEqual('Log in', _('Iniciar Sesión'))
         self.assertEqual('User register', _('Registro de Usuario')) 
-        self.assertEqual('Registration', _('Registro')) 
+        self.assertEqual('Access', _('Registro')) 
         self.assertEqual('Password:', _('Contraseña:')) 
         self.assertEqual('Confirm Password:', _('Confirmar Contraseña:')) 
         self.assertEqual('Email:', _('Email:')) 
